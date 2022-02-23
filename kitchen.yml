@@ -13,6 +13,9 @@ provisioner:
   name: chef_zero
   deprecations_as_errors: true
   chef_license: accept-no-persist
+  # Allow reboots
+  max_retries: 60
+  wait_for_retry: 300
 
 verifier:
   name: inspec

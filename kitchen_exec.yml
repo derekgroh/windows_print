@@ -8,6 +8,9 @@ transport:
 provisioner:
   name: chef_zero
   deprecations_as_errors: true
+  # Allow reboots
+  max_retries: 60
+  wait_for_retry: 300
 
 platforms:
   - name: windows-2016
