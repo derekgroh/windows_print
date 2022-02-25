@@ -41,7 +41,6 @@ suites:
 
   - name: distributed-scan
     run_list:
-      - recipe[test_windows_ad::setup_forest]
       - recipe[windows_print::distributed_scan_server]
     verifier:
       inspec_tests:

@@ -3,3 +3,4 @@ description      'Tests windows_print'
 version          '0.1.0'
 
 depends          'windows_print'
+depends          'windows_ad'

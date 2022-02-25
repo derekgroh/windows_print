@@ -19,6 +19,7 @@ jobs:
           - 'windows-2016'
         suite:
           - 'default'
+          - 'distributed-scan'
           - 'internet-printing'
           - 'lpd-service'
           - 'resources'
