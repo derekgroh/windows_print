@@ -14,6 +14,9 @@ provisioner:
   deprecations_as_errors: true
   chef_license: accept-no-persist
   # Allow reboots
+  retry_on_exit_code:
+    - 0
+    - 35  # 35 is the exit code signaling that the node is rebooting
   max_retries: 60
   wait_for_retry: 300
 
