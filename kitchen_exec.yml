@@ -8,6 +8,13 @@ transport:
 provisioner:
   name: chef_zero
   deprecations_as_errors: true
+  multiple_converge: 2
+  # Allow reboots
+  retry_on_exit_code:
+    - 0
+    - 35  # 35 is the exit code signaling that the node is rebooting
+  max_retries: 60
+  wait_for_retry: 300
 
 platforms:
   - name: windows-2016

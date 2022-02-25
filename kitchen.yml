@@ -13,6 +13,12 @@ provisioner:
   name: chef_zero
   deprecations_as_errors: true
   chef_license: accept-no-persist
+  # Allow reboots
+  retry_on_exit_code:
+    - 0
+    - 35  # 35 is the exit code signaling that the node is rebooting
+  max_retries: 60
+  wait_for_retry: 300
 
 verifier:
   name: inspec
@@ -38,7 +44,6 @@ suites:
 
   - name: distributed-scan
     run_list:
-      - recipe[test_windows_ad::setup_forest]
       - recipe[windows_print::distributed_scan_server]
     verifier:
       inspec_tests:

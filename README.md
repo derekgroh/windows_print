@@ -35,7 +35,7 @@ The `windows_print::distributed_scan_server` recipe installs the required roles 
 
 Provides the service which receives scanned documents from network scanners and routes them to the correct destinations. It also includes the Scan Management snap-in, which you can use to manage network scanners and configure scan processes.
 
-This feature is only available for server 2012r2 and server 2016 and domain membership is required.
+This feature is only available for server 2012r2 and server 2016.
 
 ```json
 {

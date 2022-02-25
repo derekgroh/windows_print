@@ -25,13 +25,19 @@
 #
 
 # Not available in server 2019.
-# Requires system to be a domain member
-if Chef::Version.new(node['os_version']) < Chef::Version.new('10.0.17')
+if Chef::Version.new(node['os_version']) < Chef::Version.new('10.0.17763')
   windows_feature %w(Printing-Server-Foundation-Features
                      FSRM-Infrastructure-Services
                      BusScan-ScanServer) do
     action :install
     management_tools true
-    only_if '(Get-WmiObject -Class Win32_ComputerSystem).PartOfDomain'
+    notifies :request_reboot, 'reboot[DistributedScanServer]', :immediately
   end
 end
+
+reboot 'DistributedScanServer' do
+  delay_mins 1
+  action :nothing
+end
+
+# Configuration of a Distrubted Scan Server is not supported by the cookbook.
